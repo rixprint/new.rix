@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rix Printing -  چاپەمەنی گشتی</title>
+    <meta name="description" content="چاپخانەی ڕیکس بۆ چاپەمەنی گشتی - خزمەتگوزاری چاپی کوالێتی بەرز لە هەرێمی کوردستان">
+    <meta property="og:title" content="Rix Printing -  چاپەمەنی گشتی">
+    <meta property="og:description" content="چاپخانەی ڕیکس بۆ چاپەمەنی گشتی - خزمەتگوزاری چاپی کوالێتی بەرز لە هەرێمی کوردستان">
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6DQ8wsfNFwfoVN7B-MEyetqDTMsV6xk1gKuwJn85bDl2kur5f3ZVuMgfQekbE8arTQu_xQSsuoVmFcOUyjaFG4RVwOvG0_kqAEb-V3MgYRzxjo7c-8mE1zqjYrN7gpdmhdDtLQ8uq2Uk_WAa1imn-XtBkTZlXAhhZJZ4Ii2qJEWoFs0jgDdXDNv31e2J2/s2332/rix%20logo.png">
+    <meta property="og:url" content="https://rixprinting.com">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --primary-color: #b01e1e;
+            --secondary-color: #dc5454;
+            --accent-color: #f59e0b;
+            --text-dark: #381f1f;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+        }
+        
+        .font-kurdish { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .font-english { font-family: 'Noto Sans', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* RTL Specific Styles */
+        .rtl .text-right { text-align: right !important; }
+        .rtl .text-left { text-align: left !important; }
+        .rtl .mr-4 { margin-left: 1rem !important; margin-right: 0 !important; }
+        .rtl .ml-4 { margin-right: 1rem !important; margin-left: 0 !important; }
+        .rtl .pr-4 { padding-left: 1rem !important; padding-right: 0 !important; }
+        .rtl .pl-4 { padding-right: 1rem !important; padding-left: 0 !important; }
+        
+        /* Side Menu Styles */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .side-menu.open {
+            right: 0;
+        }
+        
+        .side-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .side-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        /* Language Menu Styles */
+        .language-menu {
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .language-option {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            margin: 8px 0;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+        }
+        
+        .language-option:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .language-option.active {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Top Navigation Language Switcher */
+        .top-language-switcher {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .top-lang-btn {
+            padding: 6px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+        }
+        
+        .top-lang-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .top-lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* Featured Designs Section */
+        .design-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .design-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .design-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .design-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .design-card p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .design-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        
+        .design-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Partners Section */
+        .partner-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid #e5e7eb;
+        }
+        
+        /* Contact form styles */
+        .contact-form {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Contact info styles */
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info-content h4 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-info-content p {
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 280px;
+                right: -280px;
+            }
+            
+            .mobile-menu-btn {
+                top: 15px;
+                right: 15px;
+                padding: 10px;
+            }
+            
+            .top-language-switcher {
+                display: none;
+            }
+            
+            .design-card {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        /* Arabic and Kurdish text spacing */
+        .arabic-text p,
+        .kurdish-text p {
+            line-height: 2.5; /* 20pt line spacing */
+            margin-bottom: 20px;
+        }
+        
+        .arabic-text h1,
+        .kurdish-text h1,
+        .arabic-text h2,
+        .kurdish-text h2,
+        .arabic-text h3,
+        .kurdish-text h3 {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        /* Desktop navigation hide on mobile */
+        @media (max-width: 1024px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+        
+        /* Map iframe responsive */
+        iframe {
+            border-radius: 12px;
+        }
+        
+        /* Footer improvements */
+        footer {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        /* Instagram link styles */
+        .instagram-link {
+            color: #e1306c;
+            transition: all 0.3s ease;
+        }
+        
+        .instagram-link:hover {
+            color: #c13584;
+            transform: scale(1.1);
+        }
+        
+        /* Reveal animation styles */
+        .card-hover, .partner-card, .contact-form, .design-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .card-hover.revealed, .partner-card.revealed, .contact-form.revealed, .design-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-group.focused .form-label {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="rtl font-kurdish bg-gray-50">
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" onclick="toggleSideMenu()">
+        <i class="fas fa-bars text-xl"></i>
+    </button>
+    
+    <!-- Side Menu Overlay -->
+    <div class="side-menu-overlay" id="sideMenuOverlay" onclick="closeSideMenu()"></div>
+    
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-bold text-gray-800">Rix Printing</h3>
+                <button onclick="closeSideMenu()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="space-y-4 mb-8">
+                <a href="#services" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-print mr-3"></i>
+                    <span id="mobile-nav-services">خزمەتگوزارییەکان</span>
+                </a>
+                <a href="#designs" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-palette mr-3"></i>
+                    <span id="mobile-nav-designs">دیزاین و بەرهەمە جیاوازەکان</span>
+                </a>
+                <a href="#about" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-info-circle mr-3"></i>
+                    <span id="mobile-nav-about">دەربارەی ئێمە</span>
+                </a>
+                <a href="#partners" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-handshake mr-3"></i>
+                    <span id="mobile-nav-partners">هاوبەش و کڕیارەکانمان</span>
+                </a>
+                <a href="#contact" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-phone mr-3"></i>
+                    <span id="mobile-nav-contact">پەیوەندی</span>
+                </a>
+                <a href="#blog" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-300" onclick="closeSideMenu()">
+                    <i class="fas fa-blog mr-3"></i>
+                    <span id="mobile-nav-blog">بلاگ</span>
+                </a>
+                <a href="https://wa.me/9647506151617" class="block py-3 px-4 text-green-600 hover:bg-green-50 rounded-lg transition-all duration-300" target="_blank" onclick="closeSideMenu()">
+                    <i class="fab fa-whatsapp mr-3"></i>
+                    <span id="mobile-nav-whatsapp">واتساپ</span>
+                </a>
+            </div>
+            
+            <!-- Language Selection -->
+            <div class="language-menu">
+                <h4 class="text-sm font-semibold text-gray-600 mb-4">هەڵبژاردنی زمان / اللغة</h4>
+                <button class="language-option active" onclick="switchLanguage('ckb')" id="lang-ckb">
+                    کوردی (Kurdish)
+                </button>
+                <button class="language-option" onclick="switchLanguage('ar')" id="lang-ar">
+                    عربي (Arabic)
+                </button>
+                <button class="language-option" onclick="switchLanguage('en')" id="lang-en">
+                    English (English)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+<!-- Desktop Navigation -->
+<nav class="desktop-nav fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6DQ8wsfNFwfoVN7B-MEyetqDTMsV6xk1gKuwJn85bDl2kur5f3ZVuMgfQekbE8arTQu_xQSsuoVmFcOUyjaFG4RVwOvG0_kqAEb-V3MgYRzxjo7c-8mE1zqjYrN7gpdmhdDtLQ8uq2Uk_WAa1imn-XtBkTZlXAhhZJZ4Ii2qJEWoFs0jgDdXDNv31e2J2/s2332/rix%20logo.png" 
+                     alt="Rix Printing Logo" class="h-12 w-30">
+                <span class="text-2xl font-bold text-red-600 mr-4" id="desktop-brand">
+                    Rix Printing
+                </span>
+            </div>
+                
+                <div class="flex items-center space-x-8 space-x-reverse">
+                 <a href="#services" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-services"> خزمەتگوزارییەکان</a>
+                 <a href="#designs" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-designs">دیزاینەکان</a>
+                 <a href="#about" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-about">دەربارەی ئێمە</a>
+                 <a href="#partners" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-partners">هاوبەش و کڕیارەکانمان</a>
+                 <a href="#contact" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-contact">پەیوەندی</a>
+                 <a href="#blog" class="text-gray-700 hover:text-red-600 transition-colors" id="desktop-nav-blog">بلاگ</a>
+
+                    
+                    <!-- Language Switcher -->
+                    <div class="top-language-switcher">
+                        <button class="top-lang-btn active" onclick="switchLanguage('ckb')" id="top-lang-ckb">کوردی</button>
+                        <button class="top-lang-btn" onclick="switchLanguage('ar')" id="top-lang-ar">عربي</button>
+                        <button class="top-lang-btn" onclick="switchLanguage('en')" id="top-lang-en">EN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="hero-gradient relative min-h-screen flex items-center justify-center text-white pt-20 overflow-hidden">
+
+    <!-- خلفية ضبابية -->
+    <div class="absolute inset-0 bg-[url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTPTa5Mklok4oorXtwlmFtiTSF8145dRiZDP1m68YULy3OiQWlTwz2AaWJmShj_JXMheM5s7PwgR3nF5Gb-eP-tYNGqS6wy3ykLD9t5MvyhPPQgJwW-YJv4Q8KIaoOPBMB27DIQ3CioBjW_ucNvtVJtEAtA4_UqFLSE2AbyOkEX_E_jxd51zb89PwQ9o0q/s2000/8969.jpg')] 
+        bg-cover bg-center blur-xl opacity-40">
+    </div>
+
+    <!-- محتوى الهيرو -->
+    <div class="container mx-auto px-6 text-center">
+
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 kurdish-text" id="hero-title">
+            چاپخانەی ریکس بۆ چاپەمەنی گشتی
+        </h1>
+
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed kurdish-text" id="hero-subtitle">
+            ئێمە یارمەتی براندەکان دەدەین بۆ دروستکردنی چاپی جیاواز و سەرنجڕاکێش.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-12">
+            <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span class="font-semibold" id="hero-trust">متمانە</span>
+            </div>
+            <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span class="font-semibold" id="hero-quality">کوالێتی</span>
+            </div>
+            <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span class="font-semibold" id="hero-speed">خێرایی</span>
+            </div>
+        </div>
+
+        <a href="#services" 
+           class="inline-block bg-yellow-500 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 pulse-animation" 
+           id="hero-cta">
+            دەستپێبکە
+        </a>
+
+    </div>
+</section>
+
+
+    <!-- Opening Images Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8F2IqxC5T8sr1iWTbfHLHA2tThUybkmzjAES7WVixZlPN3wKeCxXX0X993YK1j9ssymjuTYOLC9u-6ouJyJZEiRnMx2OHZL9Mj2DF9FcJcnR94d_yQLOwEVE9n0LwZmDj_Nco61JBh3oujWDDybGgaDlW-iBCMpLO_Mve7lIw25OWvKSn9wueFZi5gQgO/s1709/%D8%B4%D8%AB%D8%A7.jpg" 
+                         alt="Professional Printing Services" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 text-center">
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgixePvfpYC4mk_wBsWI4MD384VxBB0gkdtrQPk3TgNJ1rx3fYf0p4OOwYEGrU49j0lP8OsD4t_WlqQ4l_2W92yrp1n1O_xh_7Wb6RX7UiamfFgbjOB9KYtMjrDF32HkIuvcao4ewvtnl9_LfEMjv6EhMyF_8FdxzJa3CvQKs3MOvpsrVPmxsejRJNZ2ktm/s1709/%D8%B4%D8%B3%D8%AB%D8%A7%D9%84%D8%B4%D8%B3%D8%AB%D8%A7%D9%84.jpg" 
+                         alt="Creative Design Services" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 text-center">
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_PJrYJoiPyqxLBE5aU8lIwO8jusMNlKwfq67SP68AjMjlx3L3cYNxa_Yhkz9o6jZ9SYc3VrDMOkJs0QcjfCZdjUjShBpFSbN7_HEXu8AcHtRONfsduE_PLuiNXUn9NS2QE-rkxc6pMh0DPVdgk24Y5ywzpsvCahmGxxYV1-yAq58YUPZZQk8GsziASuuQ/s2709/OUR-CATALOG.jpg" 
+                         alt="Quality Products" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 kurdish-text" id="services-title">
+                    خزمەتگوزارییەکانمان
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto kurdish-text" id="services-subtitle">
+                    چاپخانەی ڕیکس ئەم خزمەتگوزارییانە پێشکەش دەکات
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Printing Types -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="printing-types">جۆرەکانی چاپکردن</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li id="offset-printing">• چاپی ئۆفسێت</li>
+                        <li id="digital-printing">• چاپی دیجیتال</li>
+                        <li id="embossing">• حەرف بارز</li>
+                        <li id="uv-dtf">• UV DTF چاپی</li>
+                        <li id="dtf-printing">• DTF چاپی</li>
+                        <li id="tampo-printing">• چاپی تامپۆ</li>
+                        <li id="laser-printing">• چاپی لێزەر</li>
+                        <li id="thermal-printing">• چاپی حەراری</li>
+                        <li id="screen-printing">• چاپی سکڕین</li>
+                        <li id="drum-printing">• چاپی دروومان</li>
+                    </ul>
+                </div>
+                
+                <!-- Poster & Banner Printing -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="poster-printing">چاپکردنی پۆستەر و بانەر</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li id="design-print">• دیزاین و چاپ</li>
+                        <li id="large-format">• چاپکردنی قەبارە گەورە</li>
+                        <li id="high-quality">• کوالێتی بەرز</li>
+                    </ul>
+                </div>
+                
+                <!-- Book Printing -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-purple-600 text-4xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="book-printing">چاپکردنی کتێب و گۆڤار</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li id="various-designs">• دیزاین و قەبارەی جیاواز</li>
+                        <li id="cover-printing">• چاپکردنی ناوەوە و بەرگ</li>
+                    </ul>
+                </div>
+                
+                <!-- Business Cards -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-yellow-600 text-4xl mb-4">
+                        <i class="fas fa-address-card"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="card-printing">چاپکردنی کارتی بانگهێشت و بزنس</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li id="custom-design">• دیزاینی تایبەت</li>
+                        <li id="precise-cutting">• بڕینی ورد</li>
+                    </ul>
+                </div>
+                
+                <!-- Clothing Printing -->
+                <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="clothing-printing">چاپکردنی جل و بەرگ</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li id="direct-printing">• دروومان و چاپکردنی ڕاستەوخۆ</li>
+                        <li id="color-variety">• ڕەنگ و دیزاینی جیاواز</li>
+                    </ul>
+                </div>
+                
+                <!-- Custom Packaging -->
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl card-hover kurdish-text">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" id="custom-packaging">چاپکردنی کارتۆنی تایبەت</h3>
+                    <p class="text-gray-600" id="packaging-desc">
+                        چاپخانەی ڕیکس ڕێگەت پێدەدات چاپکراوی تایبەت بە براندەکەت دیزاین بکەیت و چاپی بکەیت.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Featured Designs Section (Full — show 3 then "عرض المزيد") -->
+<section id="designs" class="py-20 bg-gray-100" dir="rtl" lang="ku" aria-labelledby="designs-title">
+  <div class="container mx-auto px-6">
+    <!-- Our Work Images -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit9gM-IC2-AuX4QmN9ZWsmmo5m3E2BWSpTJtd_z_GIwKxapC6iPa8KuFRrWI6UL1q7KSZgJBGjIaclj619azQky_hlKAEF6-mHNdDtfW9DEvQw2j8SWV_7Y6hEKVjl0QYE5CpsWr8XnnkD0IEedhifksdx1MxqJu8_n0Ki7jaU3ZbTymvLOzRQCqheIIoo/s300/34634576.jpg"
+             alt="Our Work 1"
+             class="w-full h-48 object-cover">
+        <div class="p-4 text-center"></div>
+      </div>
+
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibm759yBtbSwMT53VwF6_0uGC77Fp6xmii9rUFM-e4liedkn2LBTkALRL7BbTk5HsdVtAj1j7j3w-RFv4rJgjKlvdGFYkxpLw5XCzzJ53SzRmnok8SzBXtFkkh1vR6HXgJEVZmAhxIvUHWmIe5H4vlHdD_SWcyCrGvaSaaXi5a9ORyIJNuI6vhyVb5jgQp/s300/357%D8%B95%D8%B9.jpg"
+             alt="Our Work 2"
+             class="w-full h-48 object-cover">
+        <div class="p-4 text-center"></div>
+      </div>
+
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg card-hover">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitUyzTqUdM8OIw4J7o3znmrwLnquTUuo821cp758GECx1bUhKefBsiRXiQyDMVOw6tjUHwfiZ7WXP0amTev1cOMZ1fcn01rHg_Fu6NKy504k2mXIWXntrR3XGhTtt-9w5mQb59P5DQdsUbo6rYaQsI1CofRrOwkFz6K48LMKyykC15BfeVIYyGLSfUu519/s300/4235.jpg"
+             alt="Our Work 3"
+             class="w-full h-48 object-cover">
+        <div class="p-4 text-center"></div>
+      </div>
+    </div>
+
+    <!-- Section Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 kurdish-text" id="designs-title">
+        دیزاین و بەرهەمە جیاوازەکانمان
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto kurdish-text" id="designs-subtitle">
+        بەشی تایبەت بە دیزاین و بەرهەمە جیاوازەکانمان
+      </p>
+    </div>
+
+    <!-- Designs Grid -->
+    <div id="designs-grid-wrapper" class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+      <div id="designs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" aria-live="polite">
+
+        <!-- Booklets & Catalogs -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-blue-500">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h3 id="designs-booklets">Booklets & Catalogs</h3>
+          <p id="designs-booklets-desc">ديزاین و چاپی کەتەلوگ و نامیلکە</p>
+          <a href="https://drive.google.com/file/d/1VtdAqQAMFSFdZpyOWe-3xQgrMjTqRi-F/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Brochures -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-green-500">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3 id="designs-brochures">Brochures</h3>
+          <p id="designs-brochures-desc">بروشوری ڕیکلامی بە دیزاینی نوێ</p>
+          <a href="https://drive.google.com/file/d/1sjcCJE_lE5YOtRV_sJer_rxjMZn2pkiU/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Business Cards -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-purple-500">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <h3 id="designs-business-cards">Business Cards</h3>
+          <p id="designs-business-cards-desc">کارتی بازرگانی</p>
+          <a href="https://drive.google.com/file/d/1QPZhHcYa4DMrBImkEikdEWHOVEBrJ4IV/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Calendars -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-red-500">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3 id="designs-calendars">Calendars</h3>
+          <p id="designs-calendars-desc">ساڵنامەی دیواری و مێزی تایبەت</p>
+          <a href="https://drive.google.com/file/d/1mSOEfJfIXVewGwSiCunkKZWjpayLJ-yZ/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Car Stickers -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-yellow-500">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 id="designs-car-stickers">Car Stickers</h3>
+          <p id="designs-car-stickers-desc">ستیکەری ئۆتۆمبێل و شاشە</p>
+          <a href="https://drive.google.com/file/d/1rErf_pizlO9UeVKmlmJ7tZeYV3oCgB4F/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Carbon Forms -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-indigo-500">
+            <i class="fas fa-copy"></i>
+          </div>
+          <h3 id="designs-carbon-forms">Carbon Forms</h3>
+          <p id="designs-carbon-forms-desc">فۆرمە کاربۆنە نەبۆکان</p>
+          <a href="https://drive.google.com/file/d/1q5pit8SjZq5LFPObF9DOcrkqrQ0ltw6Z/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Clocks -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-pink-500">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 id="designs-clocks">Clocks</h3>
+          <p id="designs-clocks-desc">کاتژمێری دیواری و مێزی ڕیکلامی</p>
+          <a href="https://drive.google.com/file/d/1fupIzt8EhSXkrumOZyhulOYuxR7UWc-O/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Clothing & Accessories -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-teal-500">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3 id="designs-clothing">Clothing & Accessories</h3>
+          <p id="designs-clothing-desc">جل و بەرگ و جەمدانە ڕیکلامیەکان</p>
+          <a href="https://drive.google.com/file/d/1P6JUyBx3hAhiwcO-QDvLuy_bZhnneHWX/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Custom Pens -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-orange-500">
+            <i class="fas fa-pen"></i>
+          </div>
+          <h3 id="designs-pens">Custom Pens</h3>
+          <p id="designs-pens-desc">قەڵەمە کراوەسازکراو و تایبەتەکان</p>
+          <a href="https://drive.google.com/file/d/1on5HNNkIFFhIqXH3iE78I3Q-Ubzz0rAL/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Desk Sets -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-cyan-500">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <h3 id="designs-desk-sets">Desk Sets</h3>
+          <p id="designs-desk-sets-desc">کۆمەڵەی میزی کار و سەرسێخ</p>
+          <a href="https://drive.google.com/file/d/1oLAMDWPVnJcdBmwAMxoWCILLxQXdR6HM/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Door Hanger -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-rose-500">
+            <i class="fas fa-door-closed"></i>
+          </div>
+          <h3 id="designs-gift-baskets">Door Hanger</h3>
+          <p id="designs-gift-baskets-desc">هەڵواسراوی دەرگا</p>
+          <a href="https://drive.google.com/file/d/1Yt1fLJBsxwJBNhGezcNV_zdWC9mtG7pg/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Envelopes -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-violet-500">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3 id="designs-envelopes">Envelopes</h3>
+          <p id="designs-envelopes-desc">زەرفی نامە</p>
+          <a href="https://drive.google.com/file/d/19qEOHeL0I0V_JRVj5W_PpGh82IUyw35j/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Flags -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-emerald-500">
+            <i class="fas fa-flag"></i>
+          </div>
+          <h3 id="designs-flags">Flags</h3>
+          <p id="designs-flags-desc">ئاڵای تایبەتمەند</p>
+          <a href="https://drive.google.com/file/d/1l9mF1-aLTcnm7OUedKCQ3J1zepC9RLFX/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Flyers -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-sky-500">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3 id="designs-flyers">Flyers</h3>
+          <p id="designs-flyers-desc">فڵایەری ڕیکلامی بە کوالێتی بەرز</p>
+          <a href="https://drive.google.com/file/d/1SAWcRzThPoWHA2SwBaLQFZR-pMl9NDiW/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Folders -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-amber-500">
+            <i class="fas fa-folder"></i>
+          </div>
+          <h3 id="designs-folders">Folders</h3>
+          <p id="designs-folders-desc">فۆڵدەری بەڕگ و بە تایبەت</p>
+          <a href="https://drive.google.com/file/d/102LGQRfdsAJYpy0wb1Vhhd4bZKSDbrXT/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Keychains -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-slate-500">
+            <i class="fas fa-key"></i>
+          </div>
+          <h3 id="designs-keychains">Keychains</h3>
+          <p id="designs-keychains-desc">بەرھەمە بانگەشەییەکان  زنجیرە کلیلیەکان</p>
+          <a href="https://drive.google.com/file/d/1ehz-yWB9kVDfy4thR-s_0DDT_4KLiHFf/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Labels & Stickers -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-lime-500">
+            <i class="fas fa-tag"></i>
+          </div>
+          <h3 id="designs-labels">Labels & Stickers</h3>
+          <p id="designs-labels-desc">لێیبڵ و ستیكەری جۆراو جۆر</p>
+          <a href="https://drive.google.com/file/d/1efATS2UH4wQcKMtyDfKqMZVmHvtFzPBJ/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Letterheads -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-stone-500">
+            <i class="fas fa-file-signature"></i>
+          </div>
+          <h3 id="designs-letterheads">Letterheads</h3>
+          <p id="designs-letterheads-desc">سەرنامەی فەرمی و تایبەت</p>
+          <a href="https://drive.google.com/file/d/1S-6nUYLh1QZylPXJ2cM9GB0lB-CMiUXY/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Notepads -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-orange-600">
+            <i class="fas fa-sticky-note"></i>
+          </div>
+          <h3 id="designs-notepads">Notepads</h3>
+          <p id="designs-notepads-desc">نۆتبڵۆک و دفاترە بچووکەکان</p>
+          <a href="https://drive.google.com/file/d/10KBC8ZZr8xM4LfRo9Qys78eqhohx9ktv/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Notebooks -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-blue-600">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3 id="designs-notebooks">Notebooks</h3>
+          <p id="designs-notebooks-desc">نوتبووکی کوردی و ئینگلیزی</p>
+          <a href="https://drive.google.com/file/d/1_laURiFzrtW7hMIV5MyEDBq7SbQ_dTrK/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Small Notepads -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-green-600">
+            <i class="fas fa-note-sticky"></i>
+          </div>
+          <h3 id="designs-small-notepads">Small Notepads</h3>
+          <p id="designs-small-notepads-desc">نوتپادی بچووک و گەورە</p>
+          <a href="https://drive.google.com/file/d/1vEviCDuQiKgdXfhfeOu6ZWvHje4Mx9RS/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Our Services -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-purple-600">
+            <i class="fas fa-print"></i>
+          </div>
+          <h3 id="designs-our-services">Our Services</h3>
+          <p id="designs-our-services-desc">هەموو خزمەتگوزارییە چاپکردنەکان</p>
+          <a href="https://drive.google.com/file/d/1gP9FH19XHwvRNgqZEIK_7nyshXYdJnyY/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Advertising Food Products -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-yellow-600">
+            <i class="fas fa-mug-hot"></i>
+          </div>
+          <h3 id="designs-food-products">Advertising Food Products</h3>
+          <p id="designs-food-products-desc">بەرهەمە خواردنەوەیی ڕیکلامی</p>
+          <a href="https://drive.google.com/file/d/1-8fj6Vq6Bj-SEr6SOJHe0PLnt54FlME6/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Advertising Gift Items -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-red-600">
+            <i class="fas fa-gift"></i>
+          </div>
+          <h3 id="designs-gift-items">Advertising Gift Items</h3>
+          <p id="designs-gift-items-desc">دۆرەفەری ڕیکلامی و هەنگاو</p>
+          <a href="https://drive.google.com/file/d/1Xq2Qo8ki_-VydifBqQGxyVFb4CbpqZSH/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Advertising Products -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-indigo-600">
+            <i class="fas fa-bag-shopping"></i>
+          </div>
+          <h3 id="designs-advertising-products">Advertising Products</h3>
+          <p id="designs-advertising-products-desc">هەموو بەرهەمە ڕیکلامیەکان</p>
+          <a href="https://drive.google.com/file/d/1b-wIDqAt2GNqRTPKyk4TrA0I9d1ZgPTm/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Advertising Technology -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-cyan-600">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3 id="designs-technology">Advertising Technology</h3>
+          <p id="designs-technology-desc">تەکنەلۆژیای نوێ بۆ ڕیکلام</p>
+          <a href="https://drive.google.com/file/d/1shYlLgp6vwHABdpR-SqtVADVzrv_fOeH/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Safety Items -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-orange-700">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 id="designs-safety-items">Safety Items</h3>
+          <p id="designs-safety-items-desc">کێش و بەرهەمە سەلامەتیەکان</p>
+          <a href="https://drive.google.com/file/d/11GFilhUGrZ5xAtTBWpJ-wmis8UWzn489/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+        <!-- Signs & Banners -->
+        <div class="design-item design-card kurdish-text">
+          <div class="design-icon bg-blue-700">
+            <i class="fas fa-flag"></i>
+          </div>
+          <h3 id="designs-signs-banners">Signs & Banners</h3>
+          <p id="designs-signs-banners-desc">نیشانە و بانەری گەورە</p>
+          <a href="https://drive.google.com/file/d/16CwaWsuNh7jU7LKNCB2pyhtAHJTKLe9B/view?usp=sharing" target="_blank" class="design-link">Click</a>
+        </div>
+
+      </div> <!-- end designs-grid -->
+<!-- Toggle button -->
+<div class="text-center mt-8">
+  <button id="designs-toggle"
+    class="group inline-flex items-center justify-center
+           w-14 h-14 rounded-full
+           border border-gray-300 bg-white shadow-sm
+           hover:shadow-lg hover:scale-105
+           transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    aria-expanded="false"
+    aria-controls="designs-grid"
+    aria-label="عرض المزيد / عرض أقل">
+
+    <!-- Arrow SVG -->
+    <svg id="designs-toggle-label"
+      class="w-7 h-7 text-gray-700 transition-transform duration-300"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+
+    <!-- Screen reader text -->
+    <span class="sr-only">عرض المزيد</span>
+  </button>
+</div>
+
+<!-- Script -->
+<script>
+(function () {
+  const initialVisible = 4;
+  const grid = document.getElementById('designs-grid');
+  const toggle = document.getElementById('designs-toggle');
+  const label = document.getElementById('designs-toggle-label');
+
+  if (!grid || !toggle) return;
+
+  const items = Array.from(grid.querySelectorAll('.design-item'));
+
+  // لو العناصر قليلة أخفي الزر
+  if (items.length <= initialVisible) {
+    toggle.style.display = 'none';
+    return;
+  }
+
+  // إخفاء الزائد بالبداية
+  items.forEach((it, idx) => {
+    if (idx >= initialVisible) {
+      it.classList.add('hidden');
+      it.setAttribute('data-hidden-by-js', 'true');
+    }
+  });
+
+  // Toggle
+  toggle.addEventListener('click', function () {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+
+    if (!expanded) {
+      // إظهار الكل
+      items.forEach(it => {
+        if (it.getAttribute('data-hidden-by-js') === 'true') {
+          it.classList.remove('hidden');
+        }
+      });
+      this.setAttribute('aria-expanded', 'true');
+      label.classList.add('rotate-180'); // السهم لفوق
+    } else {
+      // إخفاء الزائد
+      items.forEach((it, idx) => {
+        if (idx >= initialVisible) it.classList.add('hidden');
+      });
+      this.setAttribute('aria-expanded', 'false');
+      label.classList.remove('rotate-180'); // السهم لتحت
+      this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+})();
+</script>
+
+<!-- sr-only fallback (لو Tailwind مش محمل) -->
+<style>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 kurdish-text" id="partners-title">
+                   خزمه تگوزاری
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto kurdish-text" id="partners-subtitle">
+                    کڕیارەکانمان سەرچاوەی هێز و سەرکەوتنمانن
+                </p>
+            </div>
+            
+            <!-- Partners Logos Grid -->
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            
+            <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHELFNl0juvwnQN_h5wW0OOi4HDLMVMTU_-mGew40NzA6p02xtsSB5OpSCnyWcFZtwNgwO9nQ9rWtAc0HaJha_Ccwo0b7Hq4JFt-Mfnlqdm3-vZwINlTRV5-68rp_TkwnMFLbCEnKJEQ_Xdq-ypAWLxABhZR73pQvb4EOZv1v0lmKUAsVNEe2gZCIBZU7C/s1265/Artboard%2017%20copy%2010.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>
+
+            <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf0daFT-ecVyM_uVmzP3d4shAQtZn2eWqcJ0gpXF_1GljDl9shxzoHJ_50EpPQXIFf53BkBJOPSEauRFkLP2R_jzQmUqkxkBpeRRFuJRXYvtxtrQ5__NscFrutBuQa4J7oNP0IsacLzJZ5Sj9CmeoCUinwjqbcKEPRsWraQMG2T5HnlJSeD3byCpZy4l2e/s1265/Artboard%2017%20copy%2014.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>
+
+                
+            <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW8Ofzp0SiSt-R3Txqsm5_TY94Mgur4_cEDt5Pds3xsa-Frw89EujiU_5f1x1fhv9lTANOdYaH0TpWdhzEEuiPnMr8hvBUvU3UBtnfM616G5HWBpKdArOYWpR0YRS8uv9ZAg3WAIXrDk1fs2irubAbudnifvyyI1FYK-rcLRfEqLYE34xxN5vdOJ5zxWAV/s1265/Artboard%2017%20copy%2016.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>
+
+                       
+            <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEnaIATWzTBeuejkb1rYlVfdyfl1ea8591jZUxElKvxfCQhH95IV3gvL0ap6HAMTyf2cS7xjvJM1GfpDWai39f-W2ZfaDCQOpc3qaE4U5k7fO5ifph19kFm9a-PZGgGU-oF2U5URKFFqB_knCQxOQjq4NoSpoAdovCHy8F3VMxvpz3BRKfYq7siF0CJoBQ/s1499/Artboard%201%20copy%208.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+                
+                 <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZUrMNpECwSB4YiZHj-P9ZBgDgCUVY9IZG-ytUSxgychmmfdPl-WCrRqt2X7Cvm_Tm1Mgb77uQKq2YxVKbcFwcTTNyGb9qyMQKQ2JDR4W8TF5ht08n7ekDaNWLeiKiG7pHwVklDkqkwYuw5oeYLFCrB2ar66-kXAIvroW3ic5XQ1M1_R4lYx6corfzMzMJ/s1265/Artboard%2017%20copy%203.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+  
+             <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGU3yqs2Ulv2v-ggs8510YAM92HNkjoYeucBS6jkRjc0gaiN8ml8RYRyKxejtuYrpV9s8JMCXvUhhzrRYXqrBpg0ALDpCFbY4ezQsZFWF6Uty5MaxuKaVqFbDAHe3SUmgFcvKyb0b-JQS1qX4DnFrjqiyzEI9bZ6X5vK8cneAXTEjkjODV59lWczfW5Szy/s1499/Artboard%201.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3Hw8T3AH3Vtrt8Yxm-dxrj3dQb04F8c0ZBmyq_wTVNqJXwsboPFLrLTmTFOuSuQWpJdvKn5oNNuAFfdHDNKiVUcRz8z6aRxVXQnFrsoGidTgZYDMAGd_M6itUsurDsXE1H_HFN85Je-tHaT_M81F3U2-mJz6uSU4ij7wjo5CuhSX19Fhp08YtpVlUBCMB/s1264/Artboard%2017%20copy%206.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhK8rop12XYYUAoQMHY_6-x0fNgpD9aZVMLCQECIPFItGVdB11m_KuXFt1amM-pkeRhwKgYMGom79C-yJxnAHD3z6iSj2abgv9FzuisbjyBXiuJys2hCUwGEYi6knzcwB-nQciZFC_VKwMwEjkiBOzq6ZAphwNchVHjdMx-HPMkFr-oEyVlBZtFd22MQX5z/s1500/Artboard%201%20copy%2012.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgt8eoUSIRzt3MWY4boyeCavBWB2b1OM-GCx3LJt8qPnRjuTZgOHXTEPaM05FYHB00swFCN0GKTbZZYMxgJoqJMnBLWeIvBSSw6-kCED83EGmt6Wc0F6o2vBM4NwgbH-YMe4Xy4Adlz3416Xey2uVOqJnBQnQ555K2y2r5km8kgfvTn4wPMDNhiP00uKa4/s1265/Artboard%2017.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div>        
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyippkkS5t4qrl-d9P2Cg2PypTY-zn82ej0PsL7_2WR6mavgodOeYqJsMgQgTjmbLmtnGtMq0QbjvKBw7ib64JcarAnUxWiyg7nzQQDbTB_TQZo5ajEaJH3bjqUhy943pMCWltYm673hVXI7aPJfY95coH_eNkxELXzwyQ2Nqy0P5lBVQ6seamY-GGfP0D/s1499/Artboard%201%20copy%2013.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtLyLJ3ctZQEsWO8X-bosA-c8xr0bGVGIRJBLvDqG_7gN51r41JxcvXMDr0pf39AdvRw7Xed3_u4dbtJBoMRwyjmkTXyKK6K_ayIksm0oxFmTGLecaLqBaQ5osfIsuLc5EJ-Sf9Hqibn7QCSRG33c0rp7ZE0L5A0DGNZbuyUgdlhI7ke2kjXPOdcNAcosV/s1264/Artboard%2017%20copy.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXjtFIt7BkKucSSqD_s48AJ9fpKgvDuChZjNTSgscUiy5nLpZY4Euzd5IUqZjCdI4qfwOLk4LFXn-gzb5Obf58vQ_30YlESISJCP3o8hSegLdrl_bTh5kenlRc-Msq31V1e1F3RKMAKsn7U0nTAH3UyTLrez-M6SQaXEH4knvxVFn2eB26s9wWlQ6anHi1/s1265/Artboard%2017%20copy%205.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH6O14CguefADxXTW7NKRlscbiCuOmPHuYRGTx0MDzTvFxNZW9jOnEcHgSrbN0mNeY_CvWX-kNZV0ZdXmEe7Cc36io2qYMjTyqlcgxMXGmbLlYEcr1h8uu-xWZqyshHUkkm4bsCWlnYihsGSoiS-AGtdzHKhOHah14PAcvJc_Dw249yUlcae1GUs7wq74x/s1264/Artboard%2017%20copy%204.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRR92i3KIhktJHaWtlPSKQxDXNlo-C4AnAJxgRP7sSERA1aBlpFjSoIjVQe6YJ7D_c8xGdwyo8S1XNc1LHSAXTtqSjSyin2hQiq7-WNae6l8Br2-kyVp2NpypYBtVI9DgKjbAocgyovYWCvtS8tQbekcgKSUkqk7g0JCKRcpHFRgzt7xc9ISzJe4Jjk8yz/s1265/Artboard%2017%20copy%2011.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhHPCmGoCYD_niQ3CDzhEapkQFsupGvNu1QKiM5wz_T5hhHLD0lC11_Ro73tuJa1KGDnbET5fO0us38Jip3d6XOoUsbyBmQF27NM7iLSMyYJkBKX6shETOrVvVBMHsUUqPbD_bkFG9h2upexGJBPoYhFSaGxFD99mZA-zLrOsX5gvi6YnoPJme0fkq4-L3/s1265/Artboard%2017%20copy%2015.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg4Cq5ahvXHhj7Mlvi826ZdV8Q2OZD6oMTmeuyAtIPeaBbkEO51L_3J_SCMbkHzWt7HOCXWuKBTCwSXePQP07J_hULvJ5bwaOyFCZy-sRPIxH-jnY2oeica27Z1WmHBZA-Tp7mEJHBfdzZ2WNorZgdMKD1WcUy6iZPu8aVMC1FIoKAztKVaYHKw2sMENzc" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEj7i7-ooeo5ni0RKe0v8kKNRiM95t2pgx25cPAXG2GY4ATDdEkEz499mAohr39OP-GIf4m2ru6kiT7xxBIgeRLbPHcgO-jE2hGMB-eS90hR8pfnO4TBt5lL88iURZhpuon-Jpcad1WyP3XnuhiSqYGbtT2ZeFg_YpXXRyEEgGmnto_Vc7nXDiIvSiidnPc" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTZ1rzAo5fS1FgPWld6gl7kQ4LUeU5SZF3K53oGgTI3iIUAcFm_yNnIFwwgFUnIuzYKLOU8WDTRCYLBFQI5gXRVavHeFWKtSHsTLzV8ucs3x3FxPlZq7ywhx6qIOFfdKFPSlbK-1p1175aM3J2C-jUptbGKF9ZzTCoS9utRVTpFFwXEJWDL63Mv14coMVd/s1265/Artboard%2017%20copy%202.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+<div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF4UxLCBF1BDi1hP_Pk42Wd780dUTgea6iuykVrcLMoCR7oimdjTJmPfThmigYHRhaXbiZJ1BusSqM-EiD5TyMuih9a-m9i_isyZP50cT7uNW4bm5M14nwtZg0nAJQZK8Eed3sP5vT_DJQFzAO6zmkpGoa6w8dsFUkyGVFYXctoFqzOmQXTSzwR4xBup3_/s1265/Artboard%2017%20copy%2013.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+
+            <div class="group transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB-FLCwW2aqowrepewc6Z0BxYXdH_0jCCoIq-nCAtWbQywsbOv1Xhj49WTfp6M0sSIOEzQ3JRCX1aMtUoNLNIxigk3WFOxKVABz2IlwqumHiyJuwzK6y1cviJwQSkgXuHUQQxJqYpl-falimGz1s-38o2INWetB_fTI_f4rtsy7udajVWDtCqQlmZbM0Wo/s1265/Artboard%2017%20copy%2012.png" 
+                     alt="Partner 1" 
+                     class="h-13 w-auto object-contain opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+            </div> 
+            
+
+
+            
+    </section>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 kurdish-text" id="contact-title">
+               پەیوەندی
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto kurdish-text" id="contact-subtitle">
+                ئامادەیین بۆ یارمەتی دانی براندەکەت
+            </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12">
+            
+            <div class="contact-form">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 kurdish-text" id="contact-form-title">
+                    فۆرمی پەیوەندی
+                </h3>
+                
+                <form id="contactForm">
+                    <div class="form-group mb-4">
+                        <label class="form-label kurdish-text" id="contact-form-name">ناو</label>
+                        <input type="text" name="user_name" class="form-input w-full px-4 py-2 border rounded" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label class="form-label kurdish-text" id="contact-form-phone">ژمارەی مۆبایل</label>
+                        <input type="tel" name="user_phone" class="form-input w-full px-4 py-2 border rounded" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label class="form-label kurdish-text" id="contact-form-description">وشەسەرەکی داواکەت</label>
+                        <textarea name="message" class="form-input form-textarea w-full px-4 py-2 border rounded" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn kurdish-text bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded" id="contact-form-submit">
+                        ناردن
+                    </button>
+                </form>
+                <p id="contact-feedback" class="mt-4 text-sm text-green-600 hidden"></p>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 kurdish-text" id="contact-info-title">
+                    زانیاری پەیوەندی
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone text-xl"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4 class="kurdish-text">07506151617  -  07506121314</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>info@rixprinting.com</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4 class="kurdish-text">هەولێر - نزیک پردی ١٥٠م بحركە</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="w-full h-64 rounded-lg overflow-hidden">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=36.295993684256736, 44.0182026457609&hl=es;z=14&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <a href="https://maps.app.goo.gl/1iVCpGPJhzycWKf48" 
+                           target="_blank" 
+                           class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors kurdish-text" 
+                           id="view-map-btn">
+                            بینینی شوێن لەسەر نەخشە
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer dir="rtl" class="bg-red-900 text-white pt-16 pb-10">
+    <div class="container mx-auto px-6">
+
+        <!-- GRID -->
+        <div class="grid md:grid-cols-3 gap-12 text-center md:text-right mb-14">
+
+            <!-- Logo + Text -->
+            <div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuGFmtdVXoORuKkxudyuOmD3c394i7eRf8GIyQOfhG7QMeKxrqv8q7Vo6lnwaTrn7CoZnil3z148S7WV7qfQ_dLgDz6yy7wmZv4SFlrQjExqYnWAkK2OB4wXDYPqzzVp-_IthY4TtahrHUBE-7ZM2Ew7WAt7IolbQVMbF3RclAwfUMcyVVEdXnywgcQuQ6/s2332/rix%20logo.png" 
+                     alt="Rix Printing" 
+                     class="mx-auto md:mx-0 h-16 w-auto drop-shadow-lg">
+
+                <h3 class="text-2xl font-bold mt-4 mb-3 text-red-100 tracking-wide">
+                    Rix Printing
+                </h3>
+
+                <p class="text-red-200 leading-relaxed kurdish-text">
+                    چاپخانەیەکی تایبەت بە چاپەمەنی گشتی لە هەرێمی کوردستان
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 tracking-wide text-red-200">
+                    ناڤیگەیشن
+                </h4>
+                <ul class="space-y-3">
+                    <li><a href="#services" class="text-red-100 hover:text-white transition">خزمەتگوزاری</a></li>
+                    <li><a href="#designs" class="text-red-100 hover:text-white transition">دیزاینەکان</a></li>
+                    <li><a href="#partners" class="text-red-100 hover:text-white transition">کڕیارەکان و هاوبەشەکان</a></li>
+                    <li><a href="#contact" class="text-red-100 hover:text-white transition">پەیوەندی</a></li>
+                </ul>
+            </div>
+
+            <!-- Social -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4 tracking-wide text-red-200">
+                    سوشيال ميديا
+                </h4>
+
+             <!-- Instagram -->
+<a href="https://www.instagram.com/rix_printing/" 
+   target="_blank" 
+   class="inline-flex items-center justify-center gap-3 bg-white text-red-700 px-5 py-3 rounded-full hover:bg-red-50 transition-all shadow-lg mb-4">
+    <i class="fab fa-instagram text-xl"></i>
+    <span class="font-medium">Instagram</span>
+</a>
+
+<!-- TikTok -->
+<a href="https://www.tiktok.com/@rix_printing?_r=1&_t=ZS-929pLE2LWP1" 
+   target="_blank" 
+   class="inline-flex items-center justify-center gap-3 bg-white text-black px-5 py-3 rounded-full hover:bg-gray-100 transition-all shadow-lg mb-4">
+    <i class="fab fa-tiktok text-xl"></i>
+    <span class="font-medium">TikTok</span>
+</a>
+
+<!-- Facebook -->
+<a href="#" 
+   target="_blank" 
+   class="inline-flex items-center justify-center gap-3 bg-white text-blue-700 px-5 py-3 rounded-full hover:bg-blue-50 transition-all shadow-lg mb-4">
+    <i class="fab fa-facebook text-xl"></i>
+    <span class="font-medium">Facebook</span>
+</a>
+
+                <p class="text-red-200 mt-4 text-sm flex items-center justify-center md:justify-end gap-2">
+                    <i class="fas fa-map-marker-alt"></i>
+                    هەولێر - نزیک پردی ١٥٠م بحركە
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-red-800 pt-6 text-center md:text-right">
+            <p class="text-red-300 text-sm">
+                &copy; 2024 Rix Printing – هەموو مافەکان پارێزراون.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
