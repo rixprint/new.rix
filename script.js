@@ -176,14 +176,14 @@ function initDesignsToggle(){
     updateUI();
 }
 
-// Replace partners logos with local assets in order (1-02.png ... 1-31.png)
+// Replace partners logos with local assets in order (1-02.png up to 1-33.png)
 function replacePartnersLogosWithLocal(){
     const section=document.querySelector('#partners');
     if(!section) return;
     const grid=section.querySelector('.grid');
     if(!grid) return;
     let html='';
-    for(let i=2;i<=31;i++){
+    for(let i=2;i<=33;i++){
         const num=i.toString().padStart(2,'0');
         html+=`<div class="partner-item"><img src="images/images/1-${num}.png" alt="Partner"></div>`;
     }
